@@ -7,7 +7,8 @@ module AzureDevops
     def self.list_projects
       url = "https://dev.azure.com/#{organization}/_apis/projects?api-version=7.0"
       result = api_request(:get, url)
-      projects = result["value"].map { |p| "- **#{p['name']}**: #{p['description'] || 'No description'}" }.join("\n")
+      projects = result["value"].map { |p| "- name : #{p['name']} ,state : #{p['state'] || 'Unknown'} ,visibility : #{p['visibility'] || 'Unknown'} ,lastUpdateTime : #{p['lastUpdateTime'] || 'Unknown'}" }.join("\n")
+      
       success_response("Projects in #{organization}:\n\n#{projects}")
     end
 
