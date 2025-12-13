@@ -13,7 +13,7 @@ require_relative "azure_devops/test_plan_client"
 
 class AzureDevopsTool < MCP::Tool
   tool_name "azure-devops-tool"
-  description "Complete Azure DevOps integration: Projects, Work Items, Sprints, Boards, Pipelines, Repos, Pull Requests, Test Plans, and Team Members."
+  description "Complete Azure DevOps integration: Projects, Work Items, Sprints, Boards, Pipelines, Repos, Pull Requests, Test Plans, Get current user, and Team Members."
 
   input_schema(
     properties: {

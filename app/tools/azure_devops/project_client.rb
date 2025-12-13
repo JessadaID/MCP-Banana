@@ -27,9 +27,9 @@ module AzureDevops
     end
     
     def self.get_current_user
-      url = "https://dev.azure.com/#{organization}/_apis/profiles/me?api-version=7.0"
+      url = "https://dev.azure.com/#{organization}/_apis/connectionData"
       result = api_request(:get, url)
-      success_response("Current User: #{result['displayName']}")
+      success_response("Current User: #{result}")
     end
     
   end
