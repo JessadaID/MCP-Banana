@@ -70,9 +70,9 @@ class AzureDevopsTool < MCP::Tool
     begin
       case action
       # Projects & Teams (calls ProjectClient)
-      when "list_projects" then AzureDevops::ProjectClient.list_projects
-      when "list_team_members" then AzureDevops::ProjectClient.list_team_members(project)
-      when "get_current_user" then AzureDevops::ProjectClient.get_current_user
+      # when "list_projects" then AzureDevops::ProjectClient.list_projects
+      # when "list_team_members" then AzureDevops::ProjectClient.list_team_members(project)
+      # when "get_current_user" then AzureDevops::ProjectClient.get_current_user
       
       # Work Items (calls WorkItemClient)
       when "list_work_items" then AzureDevops::WorkItemClient.list_work_items(project, query, count)
@@ -95,11 +95,11 @@ class AzureDevopsTool < MCP::Tool
       when "run_pipeline" then AzureDevops::PipelineClient.run_pipeline(project, pipeline_id, branch)
       
       # Repositories & Pull Requests (calls RepoClient)
-      when "list_repositories" then AzureDevops::RepoClient.list_repositories(project)
-      when "list_branches" then AzureDevops::RepoClient.list_branches(project, repo_name)
-      when "list_commits" then AzureDevops::RepoClient.list_commits(project, repo_name, branch, count)
-      when "list_pull_requests" then AzureDevops::RepoClient.list_pull_requests(project, repo_name)
-      when "get_pull_request" then AzureDevops::RepoClient.get_pull_request(project, repo_name, pull_request_id)
+      # when "list_repositories" then AzureDevops::RepoClient.list_repositories(project)
+      # when "list_branches" then AzureDevops::RepoClient.list_branches(project, repo_name)
+      # when "list_commits" then AzureDevops::RepoClient.list_commits(project, repo_name, branch, count)
+      # when "list_pull_requests" then AzureDevops::RepoClient.list_pull_requests(project, repo_name)
+      # when "get_pull_request" then AzureDevops::RepoClient.get_pull_request(project, repo_name, pull_request_id)
       
       # Test Plans (calls TestPlanClient)
       when "list_test_plans" then AzureDevops::TestPlanClient.list_test_plans(project)
