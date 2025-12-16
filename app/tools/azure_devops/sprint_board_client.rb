@@ -4,27 +4,27 @@ module AzureDevops
 
     # ==================== Sprints & Boards ====================
 
-    def self.list_sprints(project)
-      return error_response("Project is required") unless project
-      encoded_project = encode_path(project)
+    # def self.list_sprints(project)
+    #   return error_response("Project is required") unless project
+    #   encoded_project = encode_path(project)
       
-      # Get default team ID
-      teams_url = "https://dev.azure.com/#{organization}/_apis/projects/#{encoded_project}/teams?api-version=7.0"
-      teams = api_request(:get, teams_url)
-      team_id = teams["value"].first["id"]
+    #   # Get default team ID
+    #   teams_url = "https://dev.azure.com/#{organization}/_apis/projects/#{encoded_project}/teams?api-version=7.0"
+    #   teams = api_request(:get, teams_url)
+    #   team_id = teams["value"].first["id"]
       
-      url = "https://dev.azure.com/#{organization}/#{encoded_project}/#{team_id}/_apis/work/teamsettings/iterations?api-version=7.0"
-      result = api_request(:get, url)
+    #   url = "https://dev.azure.com/#{organization}/#{encoded_project}/#{team_id}/_apis/work/teamsettings/iterations?api-version=7.0"
+    #   result = api_request(:get, url)
       
-      sprints = result["value"].map do |s|
-        dates = s["attributes"]
-        start_date = dates["startDate"]&.slice(0, 10) || "Not set"
-        end_date = dates["finishDate"]&.slice(0, 10) || "Not set"
-        "- **#{s['name']}**: #{start_date} → #{end_date} (#{dates['timeFrame']})"
-      end.join("\n")
+    #   sprints = result["value"].map do |s|
+    #     dates = s["attributes"]
+    #     start_date = dates["startDate"]&.slice(0, 10) || "Not set"
+    #     end_date = dates["finishDate"]&.slice(0, 10) || "Not set"
+    #     "- **#{s['name']}**: #{start_date} → #{end_date} (#{dates['timeFrame']})"
+    #   end.join("\n")
       
-      success_response("Sprints in #{project}:\n\n#{sprints}")
-    end
+    #   success_response("Sprints in #{project}:\n\n#{sprints}")
+    # end
 
     def self.get_current_sprint(project)
       return error_response("Project is required") unless project
